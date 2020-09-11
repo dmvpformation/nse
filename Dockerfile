@@ -4,6 +4,7 @@ RUN apt-get update
 RUN apt-get install -y wget libzip-dev apt-transport-https lsb-release ca-certificates git curl software-properties-common
 RUN apt-get -y install libxpm4 libxrender1 libgtk2.0-0 libnss3 libgconf-2-4
 RUN apt-get -y install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
+RUN apt-get install -y g++ build-essential
 
 ### Install NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
@@ -26,4 +27,3 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt update && apt install yarn
-run apt-get install g++ build-essential
