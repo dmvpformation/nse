@@ -12,8 +12,8 @@ RUN apt-get install -y nodejs
 
 ### Install Redis
 RUN apt-get install -y redis-server
-RUN redis-server stop
-RUN redis-server --port 6400
+RUN sed -i -r 's/port 6379/port 6400/' /etc/redis/redis.conf
+RUN systemctl restart redis
 
 ### Install PHP
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
