@@ -19,7 +19,7 @@ RUN /etc/init.d/redis-server restart
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main"> /etc/apt/sources.list.d/php.list
 RUN apt-get update
-RUN apt-get install --no-install-recommends -y php7.3 libapache2-mod-php7.3 php7.3-mysql php7.3-curl php7.3-json php7.3-gd php7.3-msgpack php7.3-memcached php7.3-intl php7.3-sqlite3 php7.3-gmp php7.3-geoip php7.3-mbstring php7.3-redis php7.3-xml php7.3-zip php7.3-soap php7.3-igbinary
+RUN apt-get install --no-install-recommends -y php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-curl php7.4-json php7.4-gd php7.4-msgpack php7.4-memcached php7.4-intl php7.4-sqlite3 php7.4-gmp php7.4-geoip php7.4-mbstring php7.4-redis php7.4-xml php7.4-zip php7.4-soap php7.4-igbinary
 
 ### Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -27,6 +27,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');" \
     && mv composer.phar /usr/bin/composer \
     && chmod +x /usr/bin/composer
+RUN php -v
 
 ### Install YARN
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
