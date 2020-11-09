@@ -13,10 +13,11 @@ RUN apt-get install -y nodejs
 ### Install Redis
 RUN apt-get install -y redis-server
 RUN sed -i -r 's/port 6379/port 6400/' /etc/redis/redis.conf
-RUN echo 'loadmodule /etc/redis/rejson.so' >> /etc/redis/redis.conf
-ADD https://s3.amazonaws.com/redismodules/rejson/rejson.Linux-x86_64.1.0.5.zip /etc/redis/
+RUN mkdir /etc/redis/modules/
+ADD https://s3.amazonaws.com/redismodules/rejson/rejson.Linux-x86_64.1.0.5.zip /etc/redis/modules/
 run apt-get install -y unzip
-RUN unzip /etc/redis/rejson.Linux-x86_64.1.0.5.zip
+RUN unzip /etc/redis/modules/rejson.Linux-x86_64.1.0.5.zip
+RUN echo 'loadmodule /etc/redis/modules/rejson.so' >> /etc/redis/redis.conf
 
 ### Install PHP
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
