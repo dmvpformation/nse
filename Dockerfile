@@ -11,18 +11,13 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 
 ### Install Redis
-
 RUN apt-get install -y redis-server
-ADD https://s3.amazonaws.com/redismodules/rejson/rejson.Linux-x86_64.1.0.5.zip /etc/redis/modules/
-run apt-get install -y unzip
-RUN cd /etc/redis/modules && unzip rejson.Linux-x86_64.1.0.5.zip
-RUN echo 'loadmodule /etc/redis/modules/rejson.so' >> /etc/redis/redis.conf
 
 ### Install PHP
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main"> /etc/apt/sources.list.d/php.list
 RUN apt-get update
-RUN apt-get install --no-install-recommends -y php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-curl php7.4-json php7.4-gd php7.4-msgpack php7.4-memcached php7.4-intl php7.4-sqlite3 php7.4-gmp php7.4-geoip php7.4-mbstring php7.4-redis php7.4-xml php7.4-zip php7.4-soap php7.4-igbinary
+RUN apt-get install --no-install-recommends -y php8.0 libapache2-mod-php8.0 php8.0-mysql php8.0-curl php8.0-json php8.0-gd php8.0-msgpack php8.0-memcached php8.0-intl php8.0-sqlite3 php8.0-gmp php8.0-geoip php8.0-mbstring php8.0-redis php8.0-xml php8.0-zip php8.0-soap php8.0-igbinary
 
 ### Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
