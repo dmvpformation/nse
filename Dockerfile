@@ -17,7 +17,7 @@ RUN apt-get install -y redis-server
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main"> /etc/apt/sources.list.d/php.list
 RUN apt-get update
-RUN apt-get install --no-install-recommends -y php8.0 libapache2-mod-php8.0 php8.0-mysql php8.0-curl php8.0-json php8.0-gd php8.0-msgpack php8.0-memcached php8.0-intl php8.0-sqlite3 php8.0-gmp php8.0-geoip php8.0-mbstring php8.0-redis php8.0-xml php8.0-zip php8.0-soap php8.0-igbinary
+RUN apt-get install --no-install-recommends -y php8.0 libapache2-mod-php8.0 php8.0-mysql php8.0-curl php8.0-gd php8.0-msgpack php8.0-memcached php8.0-intl php8.0-sqlite3 php8.0-gmp php8.0-mbstring php8.0-redis php8.0-xml php8.0-zip php8.0-soap php8.0-igbinary
 
 ### Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
