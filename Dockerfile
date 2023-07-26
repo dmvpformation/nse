@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 
 RUN apt-get update 
 RUN apt-get install -y wget libzip-dev apt-transport-https lsb-release ca-certificates git curl software-properties-common
@@ -7,7 +7,7 @@ RUN apt-get -y install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups
 RUN apt-get install -y g++ build-essential
 
 ### Install NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
 
 ### Install Redis
